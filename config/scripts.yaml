@@ -1,0 +1,6 @@
+turn_on_all_lights:
+    alias: 'Turn On All Lights'
+    sequence:
+      - service: light.turn_on
+        target:
+          entity_id: all

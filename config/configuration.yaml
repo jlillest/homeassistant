@@ -1,0 +1,45 @@
+# Loads the default Home Assistant components.
+# This includes things like the frontend, analytics, and mobile app.
+default_config:
+
+# Define a Home Assistant user interface.
+# The 'themes:' section loads themes from the themes/ directory.
+frontend:
+  themes: !include_dir_merge_named themes/
+
+# Configure the Home Assistant dashboard.
+lovelace:
+  mode: storage
+
+# Load automations created via the UI.
+automation: !include automations.yaml
+
+# Load scripts.
+script: !include scripts.yaml
+
+# Load scenes.
+scene: !include scenes.yaml
+
+# Configure Home Assistant to read from other configuration files.
+# Use this for keeping your main file clean.
+# 'packages:' is great for grouping configurations by feature.
+# Example: packages: !include_dir_named packages/
+
+# Example integration configuration:
+# This shows how to add a simple integration to your setup.
+# You can find the required configuration for different integrations
+# in the official Home Assistant documentation.
+#
+# Example with 'sun' and 'sensor'
+sun:
+sensor:
+  - platform: template
+    sensors:
+      solar_elevation:
+        friendly_name: "Solar Elevation"
+        unit_of_measurement: "°"
+        value_template: "{{ state_attr('sun.sun', 'elevation') }}"
+
+# Example for a specific integration (e.g., Z-Wave):
+# zwave_js:
+#   usb_path: /dev/ttyUSB0

@@ -1,0 +1,8 @@
+.- name: "Relax Mode"
+    entities:
+      light.living_room_light:
+        state: "on"
+        brightness: 128
+        rgb_color: [255, 153, 0]
+      media_player.living_room_tv:
+        state: "off"
